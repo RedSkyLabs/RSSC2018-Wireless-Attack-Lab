@@ -1,6 +1,6 @@
 # RSSC2018-Wireless-Lab
 
-## Execution
+## Air Monitor
 Here we will walk through the process of cracking a WPA2 password.
 
 1. The iwconfig command will show any wireless cards in the system. 
@@ -41,7 +41,7 @@ We can see wlan0mon was created.
 ```bash
 airodump-ng wlan0mon –bssid <mac-address> --channel <channel> –write <filename>
 ```
-
+## Password Cracking
 8. We will use aircrack-ng with the dictionary file to crack the password. 
 ```bash
 aircrack-ng <filename>.cap -a 2 -w <dictionary path>
