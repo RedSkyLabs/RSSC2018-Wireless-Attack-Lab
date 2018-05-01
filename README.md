@@ -7,7 +7,7 @@ Here we will walk through the process of cracking a WPA2 password.
 ```bash
 iwconfig
 ```
-The operating system recognizes a wireless interface named wlan0.
+   The operating system recognizes a wireless interface named wlan0.
 
 2. Enable the wireless interface.
 ```bash
