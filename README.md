@@ -7,7 +7,7 @@ Here we will walk through the process of cracking a WPA2 password.
 ```bash
 iwconfig
 ```
-   The operating system recognizes a wireless interface named wlan0.
+The operating system recognizes a wireless interface named wlan0.
 
 2. Enable the wireless interface.
 ```bash
@@ -37,7 +37,7 @@ ifconfig
 ```
 We can see wlan0mon was created.
 
-7. Use airodump-ng to capture the WPA2 handshake. The attacker will have to catch someone in the act of authenticating to get a valid capture. Airodump-ng will display a valid handshake when it captures it. It will display the handshake confirmation in the upper right-hand corner of the screen. Run this command for 15 seconds and then break out of it using ‘ctrl + C’.
+7. Use airodump-ng to capture the WPA2 handshake. The attacker will have to catch someone in the act of authenticating to get a valid capture. We have a script running that acts as someone authenticating to the network and generating that WPA2 handshake. Airodump-ng will display a valid handshake when it captures it. It will display the handshake confirmation in the upper right-hand corner of the screen. We want a to get a few of these handshakes in our capture. Run this command for 15 seconds and then break out of it using ‘ctrl + C’.
 ```bash
 airodump-ng wlan0mon –bssid <mac-address> --channel <channel> –write <filename>
 ```
