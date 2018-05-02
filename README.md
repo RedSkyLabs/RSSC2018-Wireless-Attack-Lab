@@ -62,8 +62,8 @@ More information on the commands used, or other information about airodump-ng ca
 ```bash
 aircrack-ng break-01.cap -a 2 -w dictionary.txt
 ```
-*-a forces the attack mode. The '2' following -a is for WPA-PSK. A '1' is used for WEP.
-*-w is the dictionary file used for WPA cracking. In this case, 'dictionary.txt' is sitting in our home directory.
+* -a forces the attack mode. The '2' following -a is for WPA-PSK. A '1' is used for WEP.
+* -w is the dictionary file used for WPA cracking. In this case, 'dictionary.txt' is sitting in our home directory.
 
 After a few seconds, it should find the password needed to get onto the 'RSSC' network. It is 'Drowssap2'.
 
