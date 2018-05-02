@@ -75,4 +75,4 @@ More information on the commands used, or other information about aircrack-ng ca
 ```bash
 ping 192.168.0.1
 ```
-This is pinging the AP/Router that is broadcasting this SSID. You have gotten onto the network.
+This IP address is the AP/Router that is broadcasting this SSID. If you are able to ping it successfully, you have gotten onto the network.
