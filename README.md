@@ -43,7 +43,7 @@ More information on the commands used, or other information about airmon-ng can 
 ```bash
 ifconfig 
 ```
-We can see wlan0mon was created.
+YOU can see wlan0mon was created.
 
 7. Use airodump-ng to capture the WPA2 handshake. You will have to catch someone in the act of authenticating to get a valid capture. We have a script running that acts as someone authenticating to the network and generating that WPA2 handshake. 
 ```bash
@@ -51,19 +51,19 @@ airodump-ng wlan0mon –bssid <mac-address> --channel <channel> –-write <filen
 ``` 
 Note: Replace the <mac-address> and <channel> with what you found in step 3 and <filename> with a filename. MAC address will need to use numbers, colons, and all caps. See below for correct command:
 ```bash
-airodump-ng wlan0mon -bssid 00:30:44:27:E3:38 --channel 1 --write break
+airodump-ng wlan0mon -bssid 00:30:44:27:E3:38 --channel 1 --write rssc
 ```
-airodump-ng will display a valid handshake when it captures it. It will display the handshake confirmation in the upper right-hand corner of the screen. We want a to get a few of these handshakes in our capture. Run this command for 15 seconds and then break out of it using ‘ctrl + C’. An 'ls' after you break out should display 'break-*.cap' file that we will use in the next step.
+airodump-ng will display a valid handshake when it captures it. It will display the handshake confirmation in the upper right-hand corner of the terminal window. We want a to get a few of these handshakes in our capture. Run this command for 15 seconds and then break out of it using ‘ctrl + C’. An 'ls' after you break out should display 'rssc-*.cap' file that we will use in the next step.
   
 More information on the commands used, or other information about airodump-ng can be found by running `man airodump-ng`. 
 
 ## Password Cracking
 8. We will use aircrack-ng with the dictionary file to crack the password. 
 ```bash
-aircrack-ng break-01.cap -a 2 -w dictionary.txt
+aircrack-ng rssc-01.cap -a 2 -w dictionary.txt
 ```
 * -a forces the attack mode. The '2' following -a is for WPA-PSK. A '1' is used for WEP.
-* -w is the dictionary file used for WPA cracking. In this case, 'dictionary.txt' is sitting in our home directory.
+* -w is the path to the dictionary file used for WPA cracking. In this case, 'dictionary.txt' is sitting in our home directory.
 
 After a few seconds, it should find the password needed to get onto the 'RSSC' network. It is 'Drowssap2'.
 
