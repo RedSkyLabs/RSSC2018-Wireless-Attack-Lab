@@ -8,9 +8,9 @@ In order to execute this lab, there are a few things you will need to get starte
 3. A wireless card compatiable with Kali Linux to scan/monitor wireless networks in your vicinity. 
 
 ## Air Monitor
-Here you will walk through the process of monitoring wireless networks and capturing a WPA2 handshake.
+You will walk through the process of monitoring wireless networks and capturing a WPA2 handshake. You will need one Terminal window open to execute the following steps.
 
-1. The iwconfig command will show any wireless cards in the computer. 
+1. In your terminal, execute the iwconfig command to show any wireless cards in the computer. 
 ```bash
 iwconfig
 ```
@@ -75,4 +75,4 @@ More information on the commands used, or other information about aircrack-ng ca
 ```bash
 ping 192.168.0.1
 ```
-This IP address is the AP/Router that is broadcasting this SSID. If you are able to ping it successfully, you have gotten onto the network.
+This IP address is the AP/Router that is broadcasting this SSID. If you are able to ping it successfully, you have gotten onto the network. If not, make sure you are connected to the 'RSSC' network and try again.
