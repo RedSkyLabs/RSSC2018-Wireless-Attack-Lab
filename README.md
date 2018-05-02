@@ -43,13 +43,13 @@ More information on the commands used, or other information about airmon-ng can 
 ```bash
 ifconfig 
 ```
-YOU can see wlan0mon was created.
+You can see wlan0mon was created.
 
 7. Use airodump-ng to capture the WPA2 handshake. You will have to catch someone in the act of authenticating to get a valid capture. We have a script running that acts as someone authenticating to the network and generating that WPA2 handshake. 
 ```bash
 airodump-ng wlan0mon –bssid <mac-address> --channel <channel> –-write <filename>
 ``` 
-Note: Replace the mac-address and channel with what you found in step 3 and give it a filename. MAC address will need to use numbers, colons, and all caps. See below for correct command:
+Note: Replace the 'mac-address' and 'channel' with what you found in step 3 and give it a filename. MAC address will need to use numbers, colons, and all caps. See below for correct command:
 ```bash
 airodump-ng wlan0mon -bssid 00:30:44:27:E3:38 --channel 1 --write rssc
 ```
