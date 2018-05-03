@@ -47,13 +47,13 @@ You can see wlan0mon was created.
 
 7. Use airodump-ng to capture the WPA2 handshake. You will have to catch someone in the act of authenticating to get a valid capture. We have a script running that acts as someone authenticating to the network and generating that WPA2 handshake. 
 ```bash
-airodump-ng wlan0mon –bssid <mac-address> --channel <channel> –-write <filename>
+airodump-ng wlan0mon –-bssid <mac-address> --channel <channel> –-write <filename>
 ``` 
 Note: Replace the 'mac-address' and 'channel' with what you found in step 3 and give it a filename. MAC address will need to use numbers, colons, and all caps. See below for correct command:
 ```bash
-airodump-ng wlan0mon -bssid 00:30:44:27:E3:38 --channel 1 --write rssc
+airodump-ng wlan0mon --bssid 00:30:44:27:E3:38 --channel 1 --write rssc
 ```
-airodump-ng will display a valid handshake when it captures it. It will display the handshake confirmation in the upper right-hand corner of the terminal window. We want a to get a few of these handshakes in our capture. Run this command for 15 seconds and then break out of it using ‘ctrl + C’. An 'ls' after you break out should display 'rssc-*.cap' file that we will use in the next step.
+airodump-ng will display a valid handshake when it captures it. It will display the handshake confirmation in the upper right-hand corner of the terminal window. We want a to get a few of these handshakes in our capture. Run this command for 15 seconds and then break out of it using ‘ctrl + c’. An 'ls' after you break out should display 'rssc-*.cap' file that we will use in the next step.
   
 More information on the commands used, or other information about airodump-ng can be found by running `man airodump-ng`. 
 
@@ -69,7 +69,14 @@ After a few seconds, it should find the password needed to get onto the 'RSSC' n
 
 More information on the commands used, or other information about aircrack-ng can be found by running `man aircrack-ng`. 
 
-9. Back on the Kali Linux desktop, select the icon at the bottom of the sidebar titled 'Show Applications'. Use the 'Type to search' box to search 'Settings' and open it. Select Wi-Fi and find 'RSSC' under 'Visible Networks'. Select it and type in the password to connect to the network.
+## Connecting to Wireless Network
+
+Now that you have the WPA2 password, you can get onto the 'RSSC' network.
+
+9. Before we can use the wireless card, we need to take it out of monitoring mode. 
+```bash
+airmon-ng stop wlan0mon
+```
 
 10. Back in terminal, type:
 ```bash
