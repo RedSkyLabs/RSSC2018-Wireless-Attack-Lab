@@ -23,8 +23,10 @@ ifconfig wlan0 up
 
 3. Force the wireless card to scan and report on all wireless networks in the area. The SSID you are trying to target for this lab is named ‘RSSC’. You will need the MAC address and the channel that this AP is transmitting on.
 ```bash
-iwlist wlan0 scanning
+iwlist wlan0 scanning | grep -B 5 'RSSC'
 ```
+* grep 'RSSC' prints lines matching the pattern 'RSSC'
+* grep -B 5 'RSSC' prints out lines matching the pattern 'RSSC' and the 5 lines before the match.
 
 Next, you need to change the wireless card to monitoring mode. You do this by creating a monitor interface using airmon-ng. 
 
