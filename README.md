@@ -85,3 +85,9 @@ airmon-ng stop wlan0mon
 ping 192.168.0.1
 ```
 This IP address is the AP/Router that is broadcasting this SSID. If you are able to ping it successfully, you have gotten onto the network. If not, make sure you are connected to the 'RSSC' network and try again.
+
+## Clean-up
+12. Run the following command to run a script to delete all the files you created and reset the network settings:
+```bash
+./cleanup.sh
+```
