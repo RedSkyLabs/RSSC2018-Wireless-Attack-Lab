@@ -78,7 +78,9 @@ Now that you have the WPA2 password, you can get onto the 'RSSC' network.
 airmon-ng stop wlan0mon
 ```
 
-10. Back in terminal, type:
+10. Back on the Kali Linux desktop, select the icon at the bottom of the sidebar titled 'Show Applications'. Use the 'Type to search' box to search 'Settings' and open it. Select Wi-Fi and find 'RSSC' under 'Visible Networks'. Select it and type in the password (Drowssap2) to connect to the network.
+
+11. Back in terminal, type:
 ```bash
 ping 192.168.0.1
 ```
