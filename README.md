@@ -96,5 +96,5 @@ This IP address is the AP/Router that is broadcasting this SSID. If you are able
 
 ## Conclusion
 We hope that this lab shed some light on how easily an attacker is able to crack a short, non-unique password. The longer and more complex the password is, the longer it is going to take to be cracked. This time exponentially increases with each character that is added, especially if it has special, uppercase, and lowercase characters and numbers.
-See the below link on some of the math involved in this:
+See the following link on some of the math involved in this:
 https://www.grc.com/haystack.htm
