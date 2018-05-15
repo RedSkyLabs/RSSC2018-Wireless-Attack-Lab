@@ -5,7 +5,7 @@
 In order to execute this lab, there are a few things you will need to get started:
 1. An access point broadcasting an SSID with a WPA2 password.
 2. Kali Linux installed to attack the target host from.
-3. A wireless card compatiable with Kali Linux to scan/monitor wireless networks in your vicinity. 
+3. A wireless card compatible with Kali Linux to scan/monitor wireless networks in your vicinity. 
 
 ## Air Monitor
 You will walk through the process of monitoring wireless networks and capturing a WPA2 handshake. You will need one Terminal window open to execute the following steps.
@@ -93,3 +93,8 @@ This IP address is the AP/Router that is broadcasting this SSID. If you are able
 ```bash
 ./cleanup.sh
 ```
+
+## Conclusion
+We hope that this lab shed some light on how easily an attacker is able to crack a short, non-unique password. The longer and more complex the password is, the longer it is going to take to be cracked. This time exponentially increases with each character that is added, especially if it has special, uppercase, and lowercase characters and numbers.
+See the below link on some of the math involved in this:
+https://www.grc.com/haystack.htm
