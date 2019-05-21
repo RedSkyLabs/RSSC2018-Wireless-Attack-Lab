@@ -53,7 +53,7 @@ airodump-ng wlan0mon –-bssid <mac-address> --channel <channel> –-write <file
 ``` 
 Note: Replace the 'mac-address' and 'channel' with what you found in step 3 and give it a filename. MAC address will need to use numbers, colons, and all caps. See below for correct command:
 ```bash
-airodump-ng wlan0mon --bssid 00:30:44:27:E3:38 --channel 1 --write rssc
+airodump-ng wlan0mon --bssid 00:30:44:21:BC:2D --channel 1 --write rssc
 ```
 airodump-ng will display a valid handshake when it captures it. It will display the handshake confirmation in the upper right-hand corner of the terminal window. We want a to get a few of these handshakes in our capture. Run this command for 15 seconds and then break out of it using ‘ctrl + c’. An 'ls' after you break out should display 'rssc-*.cap' file that we will use in the next step.
   
